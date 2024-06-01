@@ -1,0 +1,11 @@
+<?xml-stylesheet type="text/xsl" href=".\xsl\student.xsl"?>
+<?xml-stylesheet type="text/css" href=".\css\student.css"?>
+
+
+<student stid="22127">
+    <name>
+        <first>Pavel</first>
+        <last>Kuzma</last>
+    </name>
+    <faculty>KI</faculty>
+</student>

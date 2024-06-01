@@ -1,0 +1,10 @@
+<!ELEMENT student (name, faculty, email?)>
+<!ATTLIST student
+    stid CDATA #REQUIRED>
+
+<!ELEMENT name (first, last)>
+<!ELEMENT faculty (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+
+<!ELEMENT first (#PCDATA)>
+<!ELEMENT last (#PCDATA)>

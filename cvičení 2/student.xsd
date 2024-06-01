@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <!-- Define the name type separately -->
+    <xs:complexType name="nameType">
+        <xs:sequence>
+            <xs:element name="first" type="xs:string"/>
+            <xs:element name="last" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Define the student element -->
+    <xs:element name="student">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- Refer to the separately defined name type -->
+                <xs:element name="name" type="nameType"/>
+                <xs:element name="faculty" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="stid" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

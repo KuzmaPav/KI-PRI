@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="fakulta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="katedra" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="vedoucí">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="jméno" type="xs:string"/>
+                    <xs:choice maxOccurs="unbounded">
+                      <xs:element name="telefon" type="xs:string"/>
+                      <xs:element name="email" type="xs:string"/>
+                    </xs:choice>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="zaměstnanci">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="zaměstnanec" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="jméno" type="xs:string"/>
+                          <xs:choice maxOccurs="unbounded">
+                            <xs:element name="telefon" type="xs:string"/>
+                            <xs:element name="email" type="xs:string"/>
+                          </xs:choice>
+                          <xs:element name="pozice" minOccurs="0">
+                            <xs:complexType>
+                              <xs:choice>
+                                <xs:element name="lektor" type="xs:string"/>
+                                <xs:element name="asistent" type="xs:string"/>
+                                <xs:element name="odborný_asistent" type="xs:string"/>
+                                <xs:element name="docent" type="xs:string"/>
+                                <xs:element name="profesor" type="xs:string"/>
+                              </xs:choice>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="předměty">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="předmět" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="název" type="xs:string"/>
+                          <xs:element name="popis" type="xs:string" minOccurs="0"/>
+                        </xs:sequence>
+                        <xs:attribute name="zkratka" type="xs:string" use="required"/>
+                        <xs:attribute name="typ" default="kombinované">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                              <xs:enumeration value="přednáška"/>
+                              <xs:enumeration value="seminář"/>
+                              <xs:enumeration value="cvičení"/>
+                              <xs:enumeration value="kombinované"/>
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="zkratka_katedry" type="xs:string" use="required"/>
+            <xs:attribute name="webové_stránky" type="xs:string" default="https://www.ujep.cz/cs/"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="děkan" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

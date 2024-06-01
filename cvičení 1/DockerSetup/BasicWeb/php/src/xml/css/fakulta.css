@@ -1,0 +1,74 @@
+/* Apply styles to the fakulta element */
+fakulta {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Apply styles to the katedra element */
+katedra {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Apply styles to the vedoucí element */
+vedoucí {
+    font-weight: bold;
+}
+
+/* Apply styles to the zaměstnanci element */
+zaměstnanci {
+    margin-top: 10px;
+}
+
+/* Apply styles to the zaměstnanec element */
+zaměstnanec {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+/* Apply styles to the pozice element */
+pozice {
+    font-style: italic;
+}
+
+/* Apply styles to the předměty element */
+předměty {
+    margin-top: 10px;
+}
+
+/* Apply styles to the předmět element */
+předmět {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+/* Apply styles to the typ attribute of the předmět element */
+předmět[typ="přednáška"] {
+    background-color: #ffe6e6; /* Light red for přednáška */
+}
+
+předmět[typ="seminář"] {
+    background-color: #e6f3ff; /* Light blue for seminář */
+}
+
+předmět[typ="cvičení"] {
+    background-color: #e6ffe6; /* Light green for cvičení */
+}
+
+předmět[typ="kombinované"] {
+    background-color: #fff2e6; /* Light orange for kombinované */
+}
+
+/* Apply styles to the název element */
+název {
+    font-weight: bold;
+}
+
+/* Apply styles to the popis element */
+popis {
+    font-style: italic;
+}

@@ -1,0 +1,36 @@
+<?xml-stylesheet type="text/css" href=".\css\fakulta.css"?>
+
+<fakulta děkan="">
+    <katedra zkratka_katedry="">
+        <vedoucí>
+            <jméno>...</jméno>
+            <telefon>...</telefon>
+            <email>...</email>
+        </vedoucí>
+
+        <zaměstnanci>
+            <zaměstnanec>
+                <jméno>...</jméno>
+                <telefon>...</telefon>
+                <email>...</email>
+                <pozice>
+                    <lektor></lektor> 
+                    <!-- only one of these lektor|asistent|odborný_asistent|docent|profesor -->
+                </pozice>
+
+            </zaměstnanec>
+
+        </zaměstnanci>
+
+        <předměty>
+            <předmět zkratka="" typ="přednáška"> 
+            <!-- in attribute 'typ' only one of these přednáška|seminář|cvičení|kombinované or leave empty for default value? -->
+                <název>...</název>
+                <popis>...</popis>
+            </předmět>
+
+        </předměty>
+
+    </katedra>
+
+</fakulta>

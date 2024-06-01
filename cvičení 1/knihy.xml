@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<knihy>
+    <kniha>
+        <!-- každá kniha obsahuje dva názvy a to český a anglický specifikováno atributem -->
+        <název jazyk="cz">Epos o Berygamešovi</název>
+        <název jazyk="en">Epic of Berygamesh</název>
+        <autor>Jiří Fišer</autor>
+        <postavy>
+            <postava>Berygameš</postava>
+            <postava>Škvorkidu</postava>
+        </postavy>
+    </kniha>
+    <kniha>
+        <název jazyk="cz">Pán prstenů: návrat Fišera</název>
+        <název jazyk="en">Lord of the rings: return of Fišer</název>
+        <autor>Beránek Pavel</autor>
+        <popis>
+            Kniha o partě ajťáků, kteří se chystají na výpravu na zápočet na Fakultu Osudu.
+        </popis>
+    </kniha>
+</knihy>
+
+
+<!-- 
+    změny:
+        kniha obalené elementem knihy
+        přesunutý prolog na první řádek
+        odebrání dvou pomlček z komentáře
+        zabránění křížení u postavy x postava
+        přidány uvozovky k atributu jazyk u názvů
+        opravení koncovýho tagu postavy:    <postavy/>  ->  </postavy>
+        změna casu u autor tagu z <Autor> </autor>  ->  <autor> </autor>
+        udělat tree z postav (není well formed potřebný)
+-->

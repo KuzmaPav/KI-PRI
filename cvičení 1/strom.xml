@@ -1,0 +1,34 @@
+<schooldata>
+    <students>
+        <student>
+            <name>
+                <first>...</first>
+                <surname>...</surname>
+            </name>
+            <stid>...</stid>
+            <email>...</email>
+            <study_year>...</study_year>
+            <rozvrh>...</rozvrh>
+            <subjects>
+                <subject filled="True">...</subject>
+            </subjects>
+        </student>
+    </students>
+
+    <faculties>
+        <faculty>
+            <dean>...</dean>
+            <departments>
+                <department>
+                    <employees>
+                        <employee>
+                            <contact>...</contact>
+                            <position>...</position>
+                            <titles>...</titles>
+                        </employee>
+                    </employees>
+                </department>
+            </departments>
+        </faculty>
+    </faculties>
+</schooldata>

@@ -1,0 +1,34 @@
+<fakulta děkan="Michal Varady">
+    <katedra zkratka_katedry="KI">
+        <vedoucí>
+            <jméno>Jiří Škvor</jméno>
+            <telefon>420 475 286 711</telefon>
+            <email>Jiri.Skvor@ujep.cz</email>
+        </vedoucí>
+
+        <zaměstnanci>
+            <zaměstnanec>
+                <jméno>Pavel Beránek</jméno>
+                <telefon>420 475 286 723</telefon>
+                <email>Pavel.Beranek@ujep.cz</email>
+                <pozice>
+                    <odborný_asistent></odborný_asistent>
+                    <!-- only one of these lektor|asistent|odborný_asistent|docent|profesor -->
+                </pozice>
+
+            </zaměstnanec>
+
+        </zaměstnanci>
+
+        <předměty>
+            <předmět zkratka="APR1" typ="kombinované"> 
+            <!-- in attribute 'typ' only one of these přednáška|seminář|cvičení|kombinované or leave empty for default value? -->
+                <název>Programování 1</název>
+                <popis>Jak se má programovat pt.1</popis>
+            </předmět>
+
+        </předměty>
+
+    </katedra>
+
+</fakulta>
