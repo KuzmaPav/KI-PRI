@@ -22,4 +22,4 @@
 
     -  řešení na basic webu (cvičení1): [localhost:51001/form/form-predmety.php](http://localhost:51001/form/form-predmety.php)
     -  studium predmet xsl soubor: [studium-predmet.xsl](studium-predmet.xsl)
-    -  Vytvořený vybítací xsl soubor: [form-predmety-select.xsl](/cvičení%201/DockerSetup/BasicWeb/php/src/form/form-predmety-select.xsl)
+    -  Vytvořený vybírací xsl soubor: [form-predmety-select.xsl](/cvičení%201/DockerSetup/BasicWeb/php/src/form/form-predmety-select.xsl)
