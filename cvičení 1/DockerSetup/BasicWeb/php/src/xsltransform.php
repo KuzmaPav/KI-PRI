@@ -23,7 +23,7 @@
                     $files = scandir($xmlFilesFolder);
 
                     foreach ($files as $file) {
-                        if (is_file($xmlFilesFolder . $file)) {
+                        if (is_file($xmlFilesFolder . $file) && pathinfo($file, PATHINFO_EXTENSION) == 'xml') {
                             echo "<button type='submit' name='file' value='$file' class='btn btn-primary mb-2'>$file</button><br>";
                         }
                     }
@@ -57,52 +57,49 @@
             </div>
             <div class="col-md-8">
                 <?php
-                // Function to transform XML using XSL
-                function transformXsl($xmlFile, $xmlFilesFolder) {
-                    $xmlPath = $xmlFilesFolder . $xmlFile;
-                    $xslFilesFolder = $xmlFilesFolder . "xsl/";
+                function getMatchingXslFiles($xmlFile, $xslFilesFolder) {
+                    $xmlFileName = pathinfo($xmlFile, PATHINFO_FILENAME);
                     $xslFiles = scandir($xslFilesFolder);
-                    $xslfound = false;
+                    $matchingXslFiles = [];
 
                     foreach ($xslFiles as $file) {
-                        if (pathinfo($file, PATHINFO_FILENAME) == pathinfo($xmlFile, PATHINFO_FILENAME)) {
-                            $xslPath = $xslFilesFolder . $file;
-                            $xslfound = true;
-                            break;
+                        if (strpos($file, $xmlFileName) !== false && pathinfo($file, PATHINFO_EXTENSION) == 'xsl') {
+                            $matchingXslFiles[] = $file;
                         }
                     }
 
-                    if ($xslfound) {
-                        $xml = new DOMDocument;
-                        $xml->load($xmlPath);
-
-                        $xsl = new DOMDocument;
-                        $xsl->load($xslPath);
-
-                        $xslt = new XSLTProcessor();
-                        $xslt->importStylesheet($xsl);
-
-                        $transformed_xml = $xslt->transformToXml($xml);
-
-                        // Save the transformed XML to a temporary file
-                        $transformed_xml_file = tempnam(sys_get_temp_dir(), 'xml');
-                        file_put_contents($transformed_xml_file, $transformed_xml);
-
-                        // Generate a unique URL for the iframe source
-                        $iframe_src = "data:text/html;charset=utf-8," . rawurlencode(file_get_contents($transformed_xml_file));
-
-                        echo "<iframe src='$iframe_src' width='100%' height='1000px' max-height='2000px' style='border:0;'></iframe>";
-
-                        // Clean up the temporary file
-                        unlink($transformed_xml_file);
-                    } else {
-                        echo "Tento XML soubor nemá odpovídající XSL soubor.<br>";
-                        echo "<a href='$xmlPath' class='btn btn-info'>$xmlFile</a>";
-                    }
+                    return $matchingXslFiles;
                 }
 
-                function saveFile($file, $folder)
-                {
+                function transformXsl($xmlFile, $xslFile, $xmlFilesFolder) {
+                    $xmlPath = $xmlFilesFolder . $xmlFile;
+                    $xslPath = $xmlFilesFolder . "xsl/" . $xslFile;
+
+                    $xml = new DOMDocument;
+                    $xml->load($xmlPath);
+
+                    $xsl = new DOMDocument;
+                    $xsl->load($xslPath);
+
+                    $xslt = new XSLTProcessor();
+                    $xslt->importStylesheet($xsl);
+
+                    $transformed_xml = $xslt->transformToXml($xml);
+
+                    // Save the transformed XML to a temporary file
+                    $transformed_xml_file = tempnam(sys_get_temp_dir(), 'xml');
+                    file_put_contents($transformed_xml_file, $transformed_xml);
+
+                    // Generate a unique URL for the iframe source
+                    $iframe_src = "data:text/html;charset=utf-8," . rawurlencode(file_get_contents($transformed_xml_file));
+
+                    echo "<iframe src='$iframe_src' width='100%' height='1000px' max-height='2000px' style='border:0;'></iframe>";
+
+                    // Clean up the temporary file
+                    unlink($transformed_xml_file);
+                }
+
+                function saveFile($file, $folder) {
                     $target_dir = $folder;
                     $target_file = $target_dir . basename($file["name"]);
                     if (move_uploaded_file($file["tmp_name"], $target_file)) {
@@ -111,7 +108,6 @@
                         echo "Chyba při nahrávání souboru.<br>";
                     }
                 }
-
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if (isset($_FILES['css'])) {
@@ -124,7 +120,30 @@
 
                     if (isset($_POST['file'])) {
                         $xmlFile = $_POST['file'];
-                        transformXsl($xmlFile, $xmlFilesFolder);
+                        $xslFilesFolder = $xmlFilesFolder . "xsl/";
+                        $matchingXslFiles = getMatchingXslFiles($xmlFile, $xslFilesFolder);
+
+                        echo "<h2>Výběr XSL souboru pro $xmlFile</h2>";
+                        echo "<form method='POST' action=''>";
+                        echo "<input type='hidden' name='xmlFile' value='$xmlFile'>";
+
+                        $xmlPath = $xmlFilesFolder . $xmlFile;
+                        echo "<a href='$xmlPath' target='_blank' class='btn btn-info mb-2'>Zobrazit původní XML</a><br>";
+
+                        foreach ($matchingXslFiles as $xslFile) {
+                            echo "<button type='submit' name='xslFile' value='$xslFile' class='btn btn-primary mb-2'>$xslFile</button><br>";
+                        }
+
+                        echo "</form>";
+                    }
+
+                    if (isset($_POST['xslFile'])) {
+                        $xmlFile = $_POST['xmlFile'];
+                        $xslFile = $_POST['xslFile'];
+
+                        if ($xslFile != 'original') {
+                            transformXsl($xmlFile, $xslFile, $xmlFilesFolder);
+                        }
                     }
                 }
                 ?>
