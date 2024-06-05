@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form title="Ukázka">
+    <questions>
+        <question num="1" type="text">
+            <question_text>Is it true that...</question_text>
+        </question>
+        <question num="2" type="radiobox">
+            <question_text>Do you like coffee?</question_text>
+            <options>
+                <option>Yes</option>
+                <option>No</option>
+            </options>
+        </question>
+        <question num="3" type="checkbox">
+            <question_text>Which fruits do you like?</question_text>
+            <options>
+                <option>Apple</option>
+                <option>Banana</option>
+                <option>Cherry</option>
+            </options>
+        </question>
+    </questions>
+</form>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form title="Malý formulářík">
+  <questions>
+    <question num="1" type="checkbox">
+      <question_text>Mám rád:</question_text>
+      <options>
+        <option>Jablka</option>
+        <option>Borůvky</option>
+        <option>Jahody</option>
+      </options>
+    </question>
+    <question num="2" type="radiobox">
+      <question_text>Je den nebo noc?</question_text>
+      <options>
+        <option>den</option>
+        <option>noc</option>
+      </options>
+    </question>
+    <question num="3" type="text">
+      <question_text>Popiš svůj den</question_text>
+    </question>
+  </questions>
+</form>

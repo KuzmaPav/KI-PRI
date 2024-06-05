@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+  <questions>
+    <question num="1[]">
+      <answer>Jablka</answer>
+    </question>
+    <question num="2[]">
+      <answer>Borůvky</answer>
+    </question>
+    <question num="2">
+      <answer>den</answer>
+    <answer>Borůvky</answer><answer>den</answer></question>
+    <question num="3">
+      <answer>Docela dobrý</answer>
+    <answer>Jahody</answer><answer>Docela dobrý</answer></question>
+  </questions>
+</form>

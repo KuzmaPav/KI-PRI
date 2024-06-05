@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form title="Ahojda">
+  <questions>
+    <question num="1" type="checkbox">
+      <question_text>Mám rád:</question_text>
+      <options>
+        <option/>
+        <option>Jablka</option>
+        <option>Ano</option>
+      </options>
+    </question>
+  </questions>
+</form>
